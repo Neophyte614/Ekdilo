@@ -2,6 +2,7 @@ import 'package:ekdilo/state_management/favourite_model.dart';
 import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 
 class CharityReggaeFestival extends StatefulWidget {
   final String id;
@@ -141,7 +142,16 @@ class CharityReggaeFestivalPage extends StatefulWidget {
 }
 
 class _CharityReggaeFestivalPageState extends State<CharityReggaeFestivalPage> {
-  bool _isFavourite = false;
+  // ADDING EVENT TO THE CALENDAR.
+  final Event charityReggaeToCalendar = Event(
+    title: "Charity Reggae Festival",
+    startDate: DateTime(2024, 11, 15, 16, 0),
+    endDate: DateTime(2024, 11, 15, 23, 0),
+    location: "El Wak Stadium, Accra, Ghana",
+    description:
+        "For the real Reggae fans this is the place to be!. What you as an audience are going to get is 100% Reggae.",
+    timeZone: "GMT",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -178,33 +188,15 @@ class _CharityReggaeFestivalPageState extends State<CharityReggaeFestivalPage> {
                               Navigator.pop(context);
                             },
                           ),
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  _isFavourite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color:
-                                      _isFavourite ? Colors.red : Colors.white,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isFavourite = !_isFavourite;
-                                  });
-                                },
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.share,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                onPressed: () {
-                                  // Add your share logic here
-                                },
-                              ),
-                            ],
+                          IconButton(
+                            icon: const Icon(
+                              Icons.share,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              // Add your share logic here
+                            },
                           ),
                         ],
                       ),
@@ -264,7 +256,10 @@ class _CharityReggaeFestivalPageState extends State<CharityReggaeFestivalPage> {
                                     height: 6,
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Add2Calendar.addEvent2Cal(
+                                          charityReggaeToCalendar);
+                                    },
                                     child: const Text(
                                       "Add to Calendar",
                                       style: TextStyle(
@@ -367,8 +362,7 @@ class _CharityReggaeFestivalPageState extends State<CharityReggaeFestivalPage> {
                                   SizedBox(
                                     height: 6,
                                   ),
-                                  Text(
-                                      "Fees for tickets purchased are non-refundable"),
+                                  Text("Purchases are non-refundable"),
                                   SizedBox(
                                     height: 6,
                                   ),

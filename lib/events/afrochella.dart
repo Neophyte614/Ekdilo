@@ -1,6 +1,7 @@
 import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 
 import '../state_management/favourite_model.dart';
 
@@ -137,7 +138,16 @@ class AfrochellaPage extends StatefulWidget {
 }
 
 class _AfrochellaPageState extends State<AfrochellaPage> {
-  bool _isFavourite = false;
+  // ADDING EVENT TO THE CALENDAR.
+  final Event afrochellaToCalendar = Event(
+    title: "Afrochella",
+    startDate: DateTime(2024, 9, 28, 21, 0),
+    endDate: DateTime(2024, 9, 29, 5, 0),
+    location: "El Wak Stadium, Accra, Ghana",
+    description:
+        "Afrochella is a vibrant music festival celebrating African music, art, and culture. It's a VICE Media and Accra-based startup, EchoHouse, production.",
+    timeZone: "GMT",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -174,33 +184,15 @@ class _AfrochellaPageState extends State<AfrochellaPage> {
                               Navigator.pop(context);
                             },
                           ),
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  _isFavourite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color:
-                                      _isFavourite ? Colors.red : Colors.white,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isFavourite = !_isFavourite;
-                                  });
-                                },
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.share,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                onPressed: () {
-                                  // Add your share logic here
-                                },
-                              ),
-                            ],
+                          IconButton(
+                            icon: const Icon(
+                              Icons.share,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              // Add your share logic here
+                            },
                           ),
                         ],
                       ),
@@ -260,7 +252,10 @@ class _AfrochellaPageState extends State<AfrochellaPage> {
                                     height: 6,
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Add2Calendar.addEvent2Cal(
+                                          afrochellaToCalendar);
+                                    },
                                     child: const Text(
                                       "Add to Calendar",
                                       style: TextStyle(
@@ -363,8 +358,7 @@ class _AfrochellaPageState extends State<AfrochellaPage> {
                                   SizedBox(
                                     height: 6,
                                   ),
-                                  Text(
-                                      "Fees for tickets purchased are non-refundable"),
+                                  Text("Purchases are non-refundable"),
                                   SizedBox(
                                     height: 6,
                                   ),

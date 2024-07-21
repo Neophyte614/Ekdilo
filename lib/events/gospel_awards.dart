@@ -2,6 +2,7 @@ import 'package:ekdilo/state_management/favourite_model.dart';
 import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 
 class GospelAwards extends StatefulWidget {
   final String id;
@@ -140,7 +141,16 @@ class GospelAwardsPage extends StatefulWidget {
 }
 
 class _GospelAwardsPageState extends State<GospelAwardsPage> {
-  bool _isFavourite = false;
+  // ADDING EVENT TO THE CALENDAR.
+  final Event gospelAwardsToCalendar = Event(
+    title: "Modern Gospel Awards",
+    startDate: DateTime(2024, 9, 28, 18, 0),
+    endDate: DateTime(2024, 9, 28, 23, 0),
+    location: "Accra City Hall",
+    description:
+        "Modern Gospel Awards have seen great personalities and talents over the years in the gospel industry who holds the gospel music in high esteem.",
+    timeZone: "GMT",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -177,33 +187,15 @@ class _GospelAwardsPageState extends State<GospelAwardsPage> {
                               Navigator.pop(context);
                             },
                           ),
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  _isFavourite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color:
-                                      _isFavourite ? Colors.red : Colors.white,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isFavourite = !_isFavourite;
-                                  });
-                                },
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.share,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                onPressed: () {
-                                  // Add your share logic here
-                                },
-                              ),
-                            ],
+                          IconButton(
+                            icon: const Icon(
+                              Icons.share,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              // Add your share logic here
+                            },
                           ),
                         ],
                       ),
@@ -263,7 +255,10 @@ class _GospelAwardsPageState extends State<GospelAwardsPage> {
                                     height: 6,
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Add2Calendar.addEvent2Cal(
+                                          gospelAwardsToCalendar);
+                                    },
                                     child: const Text(
                                       "Add to Calendar",
                                       style: TextStyle(
@@ -367,8 +362,7 @@ class _GospelAwardsPageState extends State<GospelAwardsPage> {
                                   SizedBox(
                                     height: 6,
                                   ),
-                                  Text(
-                                      "Fees for tickets purchased are non-refundable"),
+                                  Text("Purchases are non-refundable"),
                                   SizedBox(
                                     height: 6,
                                   ),

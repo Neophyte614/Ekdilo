@@ -2,6 +2,7 @@ import 'package:ekdilo/state_management/favourite_model.dart';
 import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 
 class Rappaholic extends StatefulWidget {
   final String id;
@@ -144,7 +145,16 @@ class RappaholicPage extends StatefulWidget {
 }
 
 class _RappaholicPageState extends State<RappaholicPage> {
-  bool _isFavourite = false;
+  // ADDING EVENT TO THE CALENDAR.
+  final Event rappaholicToCalendar = Event(
+    title: "Rappaholic",
+    startDate: DateTime(2024, 12, 21, 21, 0),
+    endDate: DateTime(2024, 12, 11, 4, 0),
+    location: "Accra Sports Stadium",
+    description:
+        "Rappaholic is a premier hip-hop music festival in Ghana, celebrating the best of African hip-hop and rap music. The festival showcases talented artists, rappers, and DJs from Ghana and beyond, featuring performances, battles, and cyphers.",
+    timeZone: "GMT",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -181,33 +191,15 @@ class _RappaholicPageState extends State<RappaholicPage> {
                               Navigator.pop(context);
                             },
                           ),
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  _isFavourite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color:
-                                      _isFavourite ? Colors.red : Colors.white,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isFavourite = !_isFavourite;
-                                  });
-                                },
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.share,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                onPressed: () {
-                                  // Add your share logic here
-                                },
-                              ),
-                            ],
+                          IconButton(
+                            icon: const Icon(
+                              Icons.share,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              // Add your share logic here
+                            },
                           ),
                         ],
                       ),
@@ -267,7 +259,10 @@ class _RappaholicPageState extends State<RappaholicPage> {
                                     height: 6,
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Add2Calendar.addEvent2Cal(
+                                          rappaholicToCalendar);
+                                    },
                                     child: const Text(
                                       "Add to Calendar",
                                       style: TextStyle(
@@ -371,8 +366,7 @@ class _RappaholicPageState extends State<RappaholicPage> {
                                   SizedBox(
                                     height: 6,
                                   ),
-                                  Text(
-                                      "Fees for tickets purchased are non-refundable"),
+                                  Text("Purchases are non-refundable"),
                                   SizedBox(
                                     height: 6,
                                   ),

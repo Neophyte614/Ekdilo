@@ -2,6 +2,7 @@ import 'package:ekdilo/state_management/favourite_model.dart';
 import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 
 class GlobalCitizenConcert extends StatefulWidget {
   final String id;
@@ -141,7 +142,16 @@ class GlobalCitizenConcertPage extends StatefulWidget {
 }
 
 class _GlobalCitizenConcertPageState extends State<GlobalCitizenConcertPage> {
-  bool _isFavourite = false;
+  // ADDING EVENT TO THE CALENDAR.
+  final Event globalCitizenToCalendar = Event(
+    title: "Global Citizen Concert",
+    startDate: DateTime(2024, 9, 24, 18, 0),
+    endDate: DateTime(2024, 9, 25, 2, 0),
+    location: "Black Star Square, Accra",
+    description:
+        "Ghana’s first-ever Global Citizen Festival marks the 65th anniversary of the country’s independence. It’s in this spirit of self-determination and unity that Accra’s Global Citizen Festival at Black Star Square will bring together artists and world leaders to achieve an ambitious policy agenda focused on empowering girls and women, defending the planet, and creating change.",
+    timeZone: "GMT",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -178,33 +188,15 @@ class _GlobalCitizenConcertPageState extends State<GlobalCitizenConcertPage> {
                               Navigator.pop(context);
                             },
                           ),
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  _isFavourite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color:
-                                      _isFavourite ? Colors.red : Colors.white,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isFavourite = !_isFavourite;
-                                  });
-                                },
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.share,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                onPressed: () {
-                                  // Add your share logic here
-                                },
-                              ),
-                            ],
+                          IconButton(
+                            icon: const Icon(
+                              Icons.share,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              // Add your share logic here
+                            },
                           ),
                         ],
                       ),
@@ -264,7 +256,10 @@ class _GlobalCitizenConcertPageState extends State<GlobalCitizenConcertPage> {
                                     height: 6,
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Add2Calendar.addEvent2Cal(
+                                          globalCitizenToCalendar);
+                                    },
                                     child: const Text(
                                       "Add to Calendar",
                                       style: TextStyle(
@@ -367,8 +362,7 @@ class _GlobalCitizenConcertPageState extends State<GlobalCitizenConcertPage> {
                                   SizedBox(
                                     height: 6,
                                   ),
-                                  Text(
-                                      "Fees for tickets purchased are non-refundable"),
+                                  Text("Purchases are non-refundable"),
                                   SizedBox(
                                     height: 6,
                                   ),

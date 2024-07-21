@@ -2,6 +2,7 @@ import 'package:ekdilo/state_management/favourite_model.dart';
 import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 
 class OutMosphere extends StatefulWidget {
   final String id;
@@ -144,7 +145,16 @@ class OutMospherePage extends StatefulWidget {
 }
 
 class _OutMospherePageState extends State<OutMospherePage> {
-  bool _isFavourite = false;
+  // ADDING EVENT TO THE CALENDAR.
+  final Event outmosphereToCalendar = Event(
+    title: "OutMosphere",
+    startDate: DateTime(2024, 11, 16, 19, 0),
+    endDate: DateTime(2024, 11, 17, 5, 0),
+    location: "Kumasi City Mall",
+    description:
+        "Outlandish Sphere (Outmostphere) is a revolutionary music festival celebrating alternative sounds, art, and self-expression.",
+    timeZone: "GMT",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -181,33 +191,15 @@ class _OutMospherePageState extends State<OutMospherePage> {
                               Navigator.pop(context);
                             },
                           ),
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  _isFavourite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color:
-                                      _isFavourite ? Colors.red : Colors.white,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isFavourite = !_isFavourite;
-                                  });
-                                },
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.share,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                onPressed: () {
-                                  // Add your share logic here
-                                },
-                              ),
-                            ],
+                          IconButton(
+                            icon: const Icon(
+                              Icons.share,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              // Add your share logic here
+                            },
                           ),
                         ],
                       ),
@@ -267,7 +259,10 @@ class _OutMospherePageState extends State<OutMospherePage> {
                                     height: 6,
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Add2Calendar.addEvent2Cal(
+                                          outmosphereToCalendar);
+                                    },
                                     child: const Text(
                                       "Add to Calendar",
                                       style: TextStyle(
@@ -370,8 +365,7 @@ class _OutMospherePageState extends State<OutMospherePage> {
                                   SizedBox(
                                     height: 6,
                                   ),
-                                  Text(
-                                      "Fees for tickets purchased are non-refundable"),
+                                  Text("Purchases are non-refundable"),
                                   SizedBox(
                                     height: 6,
                                   ),

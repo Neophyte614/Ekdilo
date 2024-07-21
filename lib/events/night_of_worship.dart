@@ -1,6 +1,7 @@
 import 'package:ekdilo/state_management/favourite_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 
 class NightOfWorship extends StatefulWidget {
   final String id;
@@ -139,7 +140,16 @@ class NightOfWorshipPage extends StatefulWidget {
 }
 
 class _NightOfWorshipPageState extends State<NightOfWorshipPage> {
-  bool _isFavourite = false;
+  // ADDING EVENT TO THE CALENDAR.
+  final Event nightOfWorshipToCalendar = Event(
+    title: "Night of Worship",
+    startDate: DateTime(2024, 7, 21, 16, 0),
+    endDate: DateTime(2024, 7, 21, 22, 0),
+    location: "Life City Chapel Auditorium, Ayimensah",
+    description:
+        "Join us for an unforgettable Night of Worship & Honor on July 21st, 2024, at the Lifecity Chapel Auditorium in Ayimensah.",
+    timeZone: "GMT",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -176,33 +186,15 @@ class _NightOfWorshipPageState extends State<NightOfWorshipPage> {
                               Navigator.pop(context);
                             },
                           ),
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  _isFavourite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color:
-                                      _isFavourite ? Colors.red : Colors.white,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isFavourite = !_isFavourite;
-                                  });
-                                },
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.share,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                onPressed: () {
-                                  // Add your share logic here
-                                },
-                              ),
-                            ],
+                          IconButton(
+                            icon: const Icon(
+                              Icons.share,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              // Add your share logic here
+                            },
                           ),
                         ],
                       ),
@@ -262,7 +254,10 @@ class _NightOfWorshipPageState extends State<NightOfWorshipPage> {
                                     height: 6,
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Add2Calendar.addEvent2Cal(
+                                          nightOfWorshipToCalendar);
+                                    },
                                     child: const Text(
                                       "Add to Calendar",
                                       style: TextStyle(
@@ -365,8 +360,7 @@ class _NightOfWorshipPageState extends State<NightOfWorshipPage> {
                                   SizedBox(
                                     height: 6,
                                   ),
-                                  Text(
-                                      "Fees for tickets purchased are non-refundable"),
+                                  Text("Purchases are non-refundable"),
                                   SizedBox(
                                     height: 6,
                                   ),
