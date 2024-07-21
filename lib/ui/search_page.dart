@@ -110,6 +110,9 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
         body: Column(
           children: [
+            const SizedBox(
+              height: 15,
+            ),
             Container(
               margin: const EdgeInsets.only(left: 12, right: 12, top: 15),
               child: TextFormField(

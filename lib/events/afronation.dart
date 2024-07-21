@@ -2,6 +2,7 @@ import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ekdilo/state_management/favourite_model.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 
 class Afronation extends StatefulWidget {
   final String id;
@@ -144,7 +145,14 @@ class AfronationEvent extends StatefulWidget {
 }
 
 class _OutMospherePageState extends State<AfronationEvent> {
-  bool _isFavourite = false;
+  // ADDING EVENT TO THE CALENDAR.
+  final Event afronationToCalendar = Event(
+      title: "Afronation",
+      startDate: DateTime(2024, 12, 27, 19, 0),
+      endDate: DateTime(2024, 12, 31, 4, 0),
+      location: "Accra, Ghana",
+      description:
+          "Afronation is a music festival celebrating African music, culture, and heritage. It's a vibrant celebration of the continent's diverse sounds, styles, and creativity. The festival features a lineup of talented artists, DJs, and performers from Africa and the diaspora, showcasing genres like Afrobeats, Highlife, Afrohouse, and more. Afronation is held annually in Ghana, West Africa, at the Laboma Beach in Accra. The festival typically takes place over two days in December, coinciding with Ghana's festive season and the Year of Return celebrations");
 
   @override
   Widget build(BuildContext context) {
@@ -181,33 +189,15 @@ class _OutMospherePageState extends State<AfronationEvent> {
                               Navigator.pop(context);
                             },
                           ),
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  _isFavourite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color:
-                                      _isFavourite ? Colors.red : Colors.white,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isFavourite = !_isFavourite;
-                                  });
-                                },
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.share,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                onPressed: () {
-                                  // Add your share logic here
-                                },
-                              ),
-                            ],
+                          IconButton(
+                            icon: const Icon(
+                              Icons.share,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              // Add your share logic here
+                            },
                           ),
                         ],
                       ),
@@ -267,7 +257,10 @@ class _OutMospherePageState extends State<AfronationEvent> {
                                     height: 6,
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Add2Calendar.addEvent2Cal(
+                                          afronationToCalendar);
+                                    },
                                     child: const Text(
                                       "Add to Calendar",
                                       style: TextStyle(
@@ -370,8 +363,7 @@ class _OutMospherePageState extends State<AfronationEvent> {
                                   SizedBox(
                                     height: 6,
                                   ),
-                                  Text(
-                                      "Fees for tickets purchased are non-refundable"),
+                                  Text("Purchases are non-refundable"),
                                   SizedBox(
                                     height: 6,
                                   ),
@@ -402,7 +394,7 @@ class _OutMospherePageState extends State<AfronationEvent> {
                       ),
                     ),
                     Text(
-                        "Afronation is a music festival celebrating African music, culture, and heritage. It's a vibrant celebration of the continent's diverse sounds, styles, and creativity. The festival features a lineup of talented artists, DJs, and performers from Africa and the diaspora, showcasing genres like Afrobeats, Highlife, Afrohouse, and more. Afronation is held annually in Ghana, West Africa, at the Laboma Beach in Accra. The festival typically takes place over two days in December, coinciding with Ghana's festive season and the Year of Return celebrations It is held at Laboma Beach, Accra, Ghana. Afronation has become a must-attend event for music lovers and cultural enthusiasts, offering an unforgettable experience of African music, food, art, and fashion. Get ready to groove to the rhythms of Africa.")
+                        "Afronation is a music festival celebrating African music, culture, and heritage. It's a vibrant celebration of the continent's diverse sounds, styles, and creativity. The festival features a lineup of talented artists, DJs, and performers from Africa and the diaspora, showcasing genres like Afrobeats, Highlife, Afrohouse, and more. Afronation is held annually in Ghana, West Africa, at the Laboma Beach in Accra. The festival typically takes place over two days in December, coinciding with Ghana's festive season and the Year of Return celebrations. It is held at Laboma Beach, Accra, Ghana. Afronation has become a must-attend event for music lovers and cultural enthusiasts, offering an unforgettable experience of African music, food, art, and fashion. Get ready to groove to the rhythms of Africa.")
                   ],
                 ),
               ),
