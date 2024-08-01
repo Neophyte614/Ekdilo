@@ -70,7 +70,7 @@ class _RappaholicState extends State<Rappaholic> {
             Expanded(
               child: Container(
                   height: 110,
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.only(top: 10, left: 10),
                   margin: const EdgeInsets.only(right: 10),
                   decoration: const BoxDecoration(),
                   child: Column(

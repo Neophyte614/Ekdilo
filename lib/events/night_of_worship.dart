@@ -65,8 +65,8 @@ class _NightOfWorshipState extends State<NightOfWorship> {
             Expanded(
               child: Container(
                   height: 110,
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(top: 10, left: 10),
+                  margin: const EdgeInsets.only(right: 0),
                   decoration: const BoxDecoration(),
                   child: Column(
                     children: [

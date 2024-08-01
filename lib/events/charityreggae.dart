@@ -66,7 +66,7 @@ class _CharityReggaeFestivalState extends State<CharityReggaeFestival> {
             Expanded(
               child: Container(
                   height: 110,
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.only(top: 10, left: 10),
                   margin: const EdgeInsets.only(right: 10),
                   decoration: const BoxDecoration(),
                   child: Column(
@@ -81,7 +81,7 @@ class _CharityReggaeFestivalState extends State<CharityReggaeFestival> {
                           children: [
                             const Padding(
                               padding: EdgeInsets.only(top: 0),
-                              child: Text("Charity Reggae Festival",
+                              child: Text("Charity Reggae",
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,

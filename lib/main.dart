@@ -5,7 +5,6 @@ import 'package:ekdilo/ui/homepage.dart';
 import 'package:ekdilo/ui/login_page.dart';
 // ignore: unused_import
 import 'package:ekdilo/ui/profile_page.dart';
-import 'package:ekdilo/ui/search_page.dart';
 // ignore: unused_import
 import 'package:ekdilo/ui/splash_screen.dart';
 import 'package:flutter/material.dart';

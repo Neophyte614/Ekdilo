@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ekdilo/state_management/favourite_model.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:share_plus/share_plus.dart';
 
 class Afronation extends StatefulWidget {
   final String id;
@@ -70,7 +71,7 @@ class _OutMosphereState extends State<Afronation> {
             Expanded(
               child: Container(
                   height: 110,
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.only(left: 10, top: 10),
                   margin: const EdgeInsets.only(right: 10),
                   decoration: const BoxDecoration(),
                   child: Column(
