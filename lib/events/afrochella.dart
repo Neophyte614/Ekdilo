@@ -2,6 +2,7 @@ import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../state_management/favourite_model.dart';
 
@@ -115,7 +116,9 @@ class _AfroChellaEventState extends State<AfroChellaEvent> {
                       IconButton(
                         icon: const Icon(Icons.share),
                         onPressed: () {
-                          // Add share functionality here
+                          Share.share(
+                              "Come experience an eventful night with 1Gad Stonebwoy.\nHappening live at El Wak Sports Stadium. \nDownload Ekdilo app for more information here",
+                              subject: "Night of Worship");
                         },
                       ),
                     ],
@@ -191,7 +194,9 @@ class _AfrochellaPageState extends State<AfrochellaPage> {
                               size: 30,
                             ),
                             onPressed: () {
-                              // Add your share logic here
+                              Share.share(
+                                  "Come experience an eventful night with 1Gad Stonebwoy.\nHappening live at El Wak Sports Stadium. \nDownload Ekdilo app for more information here",
+                                  subject: "Night of Worship");
                             },
                           ),
                         ],

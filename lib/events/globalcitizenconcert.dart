@@ -3,6 +3,7 @@ import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:share_plus/share_plus.dart';
 
 class GlobalCitizenConcert extends StatefulWidget {
   final String id;
@@ -67,7 +68,6 @@ class _GlobalCitizenConcertState extends State<GlobalCitizenConcert> {
               child: Container(
                   height: 110,
                   padding: const EdgeInsets.only(top: 10, left: 10),
-                  margin: const EdgeInsets.only(right: 10),
                   decoration: const BoxDecoration(),
                   child: Column(
                     children: [
@@ -79,8 +79,8 @@ class _GlobalCitizenConcertState extends State<GlobalCitizenConcert> {
                         alignment: Alignment.topLeft,
                         child: Row(
                           children: [
-                            const SizedBox(
-                              child: Text("Global Citizen Con",
+                            const Expanded(
+                              child: Text("Global Citizen Concert",
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -108,7 +108,12 @@ class _GlobalCitizenConcertState extends State<GlobalCitizenConcert> {
                               },
                             ),
                             IconButton(
-                                onPressed: () {}, icon: const Icon(Icons.share))
+                                onPressed: () {
+                                  Share.share(
+                                      "Don't miss an Amazing opportunity to have a blast at the first edition of Global Citizen Concert in Ghana\n Happening live at Black Star Square \nDownload Ekdilo app for more information here",
+                                      subject: "Night of Worship");
+                                },
+                                icon: const Icon(Icons.share))
                           ],
                         ),
                       ),
@@ -116,7 +121,10 @@ class _GlobalCitizenConcertState extends State<GlobalCitizenConcert> {
                         alignment: Alignment.topLeft,
                         child: Row(
                           children: [
-                            Icon(Icons.location_on_outlined),
+                            Icon(
+                              Icons.location_on_outlined,
+                              size: 18,
+                            ),
                             Text("Black Star Square")
                           ],
                         ),
@@ -193,7 +201,9 @@ class _GlobalCitizenConcertPageState extends State<GlobalCitizenConcertPage> {
                               size: 30,
                             ),
                             onPressed: () {
-                              // Add your share logic here
+                              Share.share(
+                                  "Don't miss an Amazing opportunity to have a blast at the first edition of Global Citizen Concert in Ghana\n Happening live at Black Star Square \nDownload Ekdilo app for more information here",
+                                  subject: "Night of Worship");
                             },
                           ),
                         ],

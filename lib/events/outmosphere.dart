@@ -3,6 +3,7 @@ import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:share_plus/share_plus.dart';
 
 class OutMosphere extends StatefulWidget {
   final String id;
@@ -71,7 +72,7 @@ class _OutMosphereState extends State<OutMosphere> {
               child: Container(
                   height: 110,
                   padding: const EdgeInsets.only(top: 10, left: 10),
-                  margin: const EdgeInsets.only(right: 10),
+                  margin: const EdgeInsets.only(right: 0),
                   decoration: const BoxDecoration(),
                   child: Column(
                     children: [
@@ -91,7 +92,6 @@ class _OutMosphereState extends State<OutMosphere> {
                                     fontWeight: FontWeight.bold,
                                   )),
                             ),
-                            const Spacer(),
                             IconButton(
                               icon: Icon(
                                   _isFavourite
@@ -114,7 +114,12 @@ class _OutMosphereState extends State<OutMosphere> {
                               },
                             ),
                             IconButton(
-                                onPressed: () {}, icon: const Icon(Icons.share))
+                                onPressed: () {
+                                  Share.share(
+                                      "A revolutionary music festival celebrating alternative sounds, art, and self-expression.\nHappening live at Kumasi City Mall. \nDownload Ekdilo app for more information here",
+                                      subject: "Night of Worship");
+                                },
+                                icon: const Icon(Icons.share))
                           ],
                         ),
                       ),
@@ -198,7 +203,9 @@ class _OutMospherePageState extends State<OutMospherePage> {
                               size: 30,
                             ),
                             onPressed: () {
-                              // Add your share logic here
+                              Share.share(
+                                  "A revolutionary music festival celebrating alternative sounds, art, and self-expression.\nHappening live at Kumasi City Mall. \nDownload Ekdilo app for more information here",
+                                  subject: "Night of Worship");
                             },
                           ),
                         ],

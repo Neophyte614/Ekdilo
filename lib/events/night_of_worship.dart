@@ -2,6 +2,7 @@ import 'package:ekdilo/state_management/favourite_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:share_plus/share_plus.dart';
 
 class NightOfWorship extends StatefulWidget {
   final String id;
@@ -78,15 +79,16 @@ class _NightOfWorshipState extends State<NightOfWorship> {
                         alignment: Alignment.topLeft,
                         child: Row(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(top: 0),
-                              child: Text("Night Of Worship",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                            const Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 0),
+                                child: Text("Night Of Worship",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
                             ),
-                            const Spacer(),
                             IconButton(
                               icon: Icon(
                                   _isFavourite
@@ -109,7 +111,12 @@ class _NightOfWorshipState extends State<NightOfWorship> {
                               },
                             ),
                             IconButton(
-                                onPressed: () {}, icon: const Icon(Icons.share))
+                                onPressed: () {
+                                  Share.share(
+                                      "Don't miss an Amazing opportunity to have a blast with the Stars at Afronation\n Happening live at Lifecity Chapel Auditorium \nDownload Ekdilo app for more information here",
+                                      subject: "Night of Worship");
+                                },
+                                icon: const Icon(Icons.share))
                           ],
                         ),
                       ),
@@ -117,8 +124,11 @@ class _NightOfWorshipState extends State<NightOfWorship> {
                         alignment: Alignment.topLeft,
                         child: Row(
                           children: [
-                            Icon(Icons.location_on_outlined),
-                            Text("Lifecity Chapel Auditorium, Ayimensah")
+                            Icon(
+                              Icons.location_on_outlined,
+                              size: 18,
+                            ),
+                            Text("Lifecity Chapel Auditorium")
                           ],
                         ),
                       )
@@ -193,7 +203,9 @@ class _NightOfWorshipPageState extends State<NightOfWorshipPage> {
                               size: 30,
                             ),
                             onPressed: () {
-                              // Add your share logic here
+                              Share.share(
+                                  "Don't miss an Amazing opportunity to have a blast with the Stars at Afronation\n Happening live at Lifecity Chapel Auditorium \nDownload Ekdilo app for more information here",
+                                  subject: "Night of Worship");
                             },
                           ),
                         ],

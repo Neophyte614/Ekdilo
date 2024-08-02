@@ -3,6 +3,7 @@ import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:share_plus/share_plus.dart';
 
 class PromiseLand extends StatefulWidget {
   final String id;
@@ -67,7 +68,6 @@ class _PromiseLandState extends State<PromiseLand> {
               child: Container(
                   height: 110,
                   padding: const EdgeInsets.only(top: 10, left: 10),
-                  margin: const EdgeInsets.only(right: 10),
                   decoration: const BoxDecoration(),
                   child: Column(
                     children: [
@@ -110,7 +110,12 @@ class _PromiseLandState extends State<PromiseLand> {
                               },
                             ),
                             IconButton(
-                                onPressed: () {}, icon: const Icon(Icons.share))
+                                onPressed: () {
+                                  Share.share(
+                                      "Have a beautiful experience at the Promise Land with King Promise.\n Happening live at Black Star Square \nDownload Ekdilo app for more information here",
+                                      subject: "Night of Worship");
+                                },
+                                icon: const Icon(Icons.share))
                           ],
                         ),
                       ),
@@ -194,7 +199,9 @@ class _PromiseLandPageState extends State<PromiseLandPage> {
                               size: 30,
                             ),
                             onPressed: () {
-                              // Add your share logic here
+                              Share.share(
+                                  "Have a beautiful experience at the Promise Land with King Promise.\n Happening live at Black Star Square \nDownload Ekdilo app for more information here",
+                                  subject: "Night of Worship");
                             },
                           ),
                         ],

@@ -3,6 +3,7 @@ import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:share_plus/share_plus.dart';
 
 class CharityReggaeFestival extends StatefulWidget {
   final String id;
@@ -67,7 +68,6 @@ class _CharityReggaeFestivalState extends State<CharityReggaeFestival> {
               child: Container(
                   height: 110,
                   padding: const EdgeInsets.only(top: 10, left: 10),
-                  margin: const EdgeInsets.only(right: 10),
                   decoration: const BoxDecoration(),
                   child: Column(
                     children: [
@@ -79,15 +79,13 @@ class _CharityReggaeFestivalState extends State<CharityReggaeFestival> {
                         alignment: Alignment.topLeft,
                         child: Row(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(top: 0),
+                            const Expanded(
                               child: Text("Charity Reggae",
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   )),
                             ),
-                            const Spacer(),
                             IconButton(
                               icon: Icon(
                                   _isFavourite
@@ -110,7 +108,12 @@ class _CharityReggaeFestivalState extends State<CharityReggaeFestival> {
                               },
                             ),
                             IconButton(
-                                onPressed: () {}, icon: const Icon(Icons.share))
+                                onPressed: () {
+                                  Share.share(
+                                      "The Reggae world is rocking on the Upcoming Charity Reggae Festival.\n Happening live at El Wak Sports Stadium \nDownload Ekdilo app for more information here",
+                                      subject: "Night of Worship");
+                                },
+                                icon: const Icon(Icons.share))
                           ],
                         ),
                       ),
@@ -118,7 +121,10 @@ class _CharityReggaeFestivalState extends State<CharityReggaeFestival> {
                         alignment: Alignment.topLeft,
                         child: Row(
                           children: [
-                            Icon(Icons.location_on_outlined),
+                            Icon(
+                              Icons.location_on_outlined,
+                              size: 19,
+                            ),
                             Text("El Wak Sports Stadium")
                           ],
                         ),
@@ -195,7 +201,9 @@ class _CharityReggaeFestivalPageState extends State<CharityReggaeFestivalPage> {
                               size: 30,
                             ),
                             onPressed: () {
-                              // Add your share logic here
+                              Share.share(
+                                  "The Reggae world is rocking on the Upcoming Charity Reggae Festival.\n Happening live at El Wak Sports Stadium \nDownload Ekdilo app for more information here",
+                                  subject: "Night of Worship");
                             },
                           ),
                         ],

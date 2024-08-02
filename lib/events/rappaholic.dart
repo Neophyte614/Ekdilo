@@ -3,6 +3,7 @@ import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:share_plus/share_plus.dart';
 
 class Rappaholic extends StatefulWidget {
   final String id;
@@ -114,7 +115,12 @@ class _RappaholicState extends State<Rappaholic> {
                               },
                             ),
                             IconButton(
-                                onPressed: () {}, icon: const Icon(Icons.share))
+                                onPressed: () {
+                                  Share.share(
+                                      "Celebrating the best African Hip Hop with your one and only Sarkodie.\nHappening live at Accra Sports Stadium. \nDownload Ekdilo app for more information here",
+                                      subject: "Night of Worship");
+                                },
+                                icon: const Icon(Icons.share))
                           ],
                         ),
                       ),
@@ -198,7 +204,9 @@ class _RappaholicPageState extends State<RappaholicPage> {
                               size: 30,
                             ),
                             onPressed: () {
-                              // Add your share logic here
+                              Share.share(
+                                  "Celebrating the best African Hip Hop with your one and only Sarkodie.\nHappening live at Accra Sports Stadium. \nDownload Ekdilo app for more information here",
+                                  subject: "Night of Worship");
                             },
                           ),
                         ],

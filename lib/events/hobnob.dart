@@ -3,6 +3,7 @@ import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:share_plus/share_plus.dart';
 
 class Hobnob extends StatefulWidget {
   final String id;
@@ -67,7 +68,6 @@ class _HobnobState extends State<Hobnob> {
               child: Container(
                   height: 110,
                   padding: const EdgeInsets.only(top: 10, left: 10),
-                  margin: const EdgeInsets.only(right: 10),
                   decoration: const BoxDecoration(),
                   child: Column(
                     children: [
@@ -81,7 +81,7 @@ class _HobnobState extends State<Hobnob> {
                           children: [
                             const Padding(
                               padding: EdgeInsets.only(top: 0),
-                              child: Text("HobNob Accra",
+                              child: Text("Hobnob Accra",
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -110,7 +110,12 @@ class _HobnobState extends State<Hobnob> {
                               },
                             ),
                             IconButton(
-                                onPressed: () {}, icon: const Icon(Icons.share))
+                                onPressed: () {
+                                  Share.share(
+                                      "An Exclusive Networking event for Business professionals, working class and expatriates.\nHappening live at Buro. \nDownload Ekdilo app for more information here",
+                                      subject: "Night of Worship");
+                                },
+                                icon: const Icon(Icons.share))
                           ],
                         ),
                       ),
@@ -194,7 +199,9 @@ class _HobnobPageState extends State<HobnobPage> {
                               size: 30,
                             ),
                             onPressed: () {
-                              // Add your share logic here
+                              Share.share(
+                                  "An Exclusive Networking event for Business professionals, working class and expatriates.\nHappening live at Buro. \nDownload Ekdilo app for more information here",
+                                  subject: "Night of Worship");
                             },
                           ),
                         ],

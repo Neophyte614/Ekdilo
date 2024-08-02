@@ -115,7 +115,12 @@ class _OutMosphereState extends State<Afronation> {
                               },
                             ),
                             IconButton(
-                                onPressed: () {}, icon: const Icon(Icons.share))
+                                onPressed: () {
+                                  Share.share(
+                                      "Live throught the rich culture of African Music and Heritage.\n Happening live at Accra \nDownload Ekdilo app for more information here",
+                                      subject: "Night of Worship");
+                                },
+                                icon: const Icon(Icons.share))
                           ],
                         ),
                       ),
@@ -197,7 +202,9 @@ class _OutMospherePageState extends State<AfronationEvent> {
                               size: 30,
                             ),
                             onPressed: () {
-                              // Add your share logic here
+                              Share.share(
+                                  "Live throught the rich culture of African Music and Heritage.\n Happening live at Accra \nDownload Ekdilo app for more information here",
+                                  subject: "Night of Worship");
                             },
                           ),
                         ],

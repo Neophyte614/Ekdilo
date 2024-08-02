@@ -3,6 +3,7 @@ import 'package:ekdilo/ui/ticket_type.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:share_plus/share_plus.dart';
 
 class GospelAwards extends StatefulWidget {
   final String id;
@@ -67,7 +68,6 @@ class _GospelAwardsState extends State<GospelAwards> {
               child: Container(
                   height: 110,
                   padding: const EdgeInsets.only(top: 10, left: 10),
-                  margin: const EdgeInsets.only(right: 10),
                   decoration: const BoxDecoration(),
                   child: Column(
                     children: [
@@ -83,7 +83,7 @@ class _GospelAwardsState extends State<GospelAwards> {
                               padding: EdgeInsets.only(top: 0),
                               child: Text("Gospel Awards",
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   )),
                             ),
@@ -110,7 +110,12 @@ class _GospelAwardsState extends State<GospelAwards> {
                               },
                             ),
                             IconButton(
-                                onPressed: () {}, icon: const Icon(Icons.share))
+                                onPressed: () {
+                                  Share.share(
+                                      "Come for an eventful night at Modern Gospel Awards.\nHappening live at Accra City Hall. \nDownload Ekdilo app for more information here",
+                                      subject: "Night of Worship");
+                                },
+                                icon: const Icon(Icons.share))
                           ],
                         ),
                       ),
@@ -194,7 +199,9 @@ class _GospelAwardsPageState extends State<GospelAwardsPage> {
                               size: 30,
                             ),
                             onPressed: () {
-                              // Add your share logic here
+                              Share.share(
+                                  "Come for an eventful night at Modern Gospel Awards.\nHappening live at Accra City Hall. \nDownload Ekdilo app for more information here",
+                                  subject: "Night of Worship");
                             },
                           ),
                         ],
