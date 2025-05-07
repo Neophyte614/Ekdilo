@@ -1,6 +1,6 @@
 # ekdilo
 
-A Flutte project about finding events around you or certain locations
+A Flutter project about finding events around you or certain locations
 
 ## Getting Started
 
